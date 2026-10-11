@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobSmart AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1 class="hero-title">🎯 JobSmart AI</h1>
+    <p class="hero-subtitle">
+      Upload your CV, provide a job description, and get a match score, a tailored cover letter,
+      and an improved CV — all in one place.
+    </p>
+  </header>
+
+  <main class="container">
+
+    <!-- Settings -->
+    <section class="panel">
+      <h2 class="panel-title">⚙️ Settings</h2>
+      <label class="field-label" for="apiKeyInfo">Groq API Key</label>
+      <p class="hint">
+        The backend's <code>.env</code> file must have <code>GROQ_API_KEY</code> set.
+      </p>
+    </section>
+
+    <!-- Upload section -->
+    <section class="upload-grid">
+      <div class="panel">
+        <h3 class="panel-title">📄 Upload Your CV</h3>
+        <label class="dropzone" id="cvDropzone">
+          <input type="file" id="cvFile" accept=".pdf" hidden>
+          <span class="dropzone-icon">📎</span>
+          <span id="cvFileName">Choose your CV (PDF) here</span>
+        </label>
+      </div>
+
+      <div class="panel">
+        <h3 class="panel-title">💼 Provide Job Description</h3>
+
+        <div class="tabs" id="jdTabs">
+          <button class="tab-btn active" data-tab="paste">Paste Text</button>
+          <button class="tab-btn" data-tab="pdf">Upload PDF</button>
+          <button class="tab-btn" data-tab="image">Upload Image</button>
+        </div>
+
+        <div class="tab-content active" data-tab-content="paste">
+          <textarea id="jdText" placeholder="Paste the job description here..." rows="7"></textarea>
+        </div>
+
+        <div class="tab-content" data-tab-content="pdf">
+          <label class="dropzone" id="jdPdfDropzone">
+            <input type="file" id="jdPdfFile" accept=".pdf" hidden>
+            <span class="dropzone-icon">📎</span>
+            <span id="jdPdfFileName">Choose the JD PDF here</span>
+          </label>
+        </div>
+
+        <div class="tab-content" data-tab-content="image">
+          <label class="dropzone" id="jdImageDropzone">
+            <input type="file" id="jdImageFile" accept="image/*" hidden>
+            <span class="dropzone-icon">🖼️</span>
+            <span id="jdImageFileName">Choose the JD screenshot/image here</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <div class="analyze-row">
+      <button id="analyzeBtn" class="btn-primary">🚀 Analyze</button>
+    </div>
+
+    <p id="errorBox" class="error-box" hidden></p>
+
+    <!-- Loading -->
+    <div id="loadingBox" class="loading-box" hidden>
+      <div class="spinner"></div>
+      <p id="loadingText">Analyzing...</p>
+    </div>
+
+    <!-- Results -->
+    <section id="resultsSection" class="results" hidden>
+
+      <h2 class="section-heading">📊 Match Analysis</h2>
+      <div class="analysis-grid">
+        <div class="score-card">
+          <div class="score-label">Overall Match Score</div>
+          <div id="scoreNumber" class="score-number">0<span class="score-out-of">/100</span></div>
+          <div id="verdictBadge" class="verdict-badge"></div>
+        </div>
+        <div class="panel">
+          <h4>💡 Recommendation</h4>
+          <p id="recommendationText"></p>
+        </div>
+      </div>
+
+      <div class="sg-grid">
+        <div class="panel">
+          <h4>✅ Strengths</h4>
+          <ul id="strengthsList" class="bullet-list"></ul>
+        </div>
+        <div class="panel">
+          <h4>⚠️ Gaps</h4>
+          <ul id="gapsList" class="bullet-list"></ul>
+        </div>
+      </div>
+
+      <h2 class="section-heading">📥 Downloads</h2>
+      <div class="downloads-grid">
+        <div class="panel">
+          <h4>✉️ Tailored Cover Letter</h4>
+          <details class="preview">
+            <summary>Preview</summary>
+            <div id="coverLetterPreview" class="preview-content"></div>
+          </details>
+          <button id="downloadCoverLetter" class="btn-secondary">⬇️ Download Cover Letter (PDF)</button>
+        </div>
+        <div class="panel">
+          <h4>📄 Tailored CV</h4>
+          <details class="preview">
+            <summary>Preview</summary>
+            <div id="tailoredCvPreview" class="preview-content"></div>
+          </details>
+          <button id="downloadTailoredCv" class="btn-secondary">⬇️ Download Tailored CV (PDF)</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">Made with FastAPI + Groq</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

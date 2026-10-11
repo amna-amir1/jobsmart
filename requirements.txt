@@ -1,0 +1,15 @@
+langchain
+langchain-community
+langchain-anthropic
+chromadb
+pypdf
+python-dotenv
+fastapi
+uvicorn
+psycopg2-binary
+sqlalchemy
+sentence-transformers
+streamlit
+fpdf2
+groq
+pillow

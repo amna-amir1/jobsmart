@@ -1,0 +1,336 @@
+:root {
+  --bg: #10131f;
+  --bg-panel: #161b2c;
+  --border: #262c40;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --accent-2: #22d3ee;
+  --green: #22c55e;
+  --yellow: #eab308;
+  --red: #ef4444;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Noto Nastaliq Urdu', sans-serif;
+  background: linear-gradient(180deg, #10131f 0%, #161b2c 100%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 1.5rem;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 640px;
+  margin: 0.6rem auto 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.panel-title {
+  margin-top: 0;
+}
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 720px) {
+  .upload-grid { grid-template-columns: 1fr; }
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  cursor: pointer;
+  text-align: center;
+  color: var(--text-muted);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.dropzone:hover {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.06);
+}
+
+.dropzone.has-file {
+  border-color: var(--green);
+  color: var(--text);
+}
+
+.dropzone-icon {
+  font-size: 1.8rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+textarea {
+  width: 100%;
+  background: #0f1420;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 0.8rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.analyze-row {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  border: none;
+  padding: 0.8rem 2.2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.btn-primary:hover { opacity: 0.9; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary {
+  width: 100%;
+  background: var(--bg-panel);
+  border: 1px solid var(--accent);
+  color: var(--accent-2);
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.6rem;
+}
+
+.btn-secondary:hover { background: rgba(99, 102, 241, 0.1); }
+
+.error-box {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--red);
+  color: #fecaca;
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.loading-box {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  margin: 0 auto 0.8rem;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.section-heading {
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.6rem;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 720px) {
+  .analysis-grid { grid-template-columns: 1fr; }
+}
+
+.score-card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.6rem 1.8rem;
+  text-align: center;
+}
+
+.score-label {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.score-number {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.score-out-of {
+  font-size: 1.4rem;
+}
+
+.verdict-badge {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  background: rgba(34, 197, 94, 0.13);
+  color: var(--green);
+}
+
+.sg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 720px) {
+  .sg-grid { grid-template-columns: 1fr; }
+}
+
+.bullet-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.bullet-list li { margin-bottom: 0.4rem; }
+
+.downloads-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .downloads-grid { grid-template-columns: 1fr; }
+}
+
+.preview summary {
+  cursor: pointer;
+  color: var(--accent-2);
+  margin-bottom: 0.5rem;
+}
+
+.preview-content {
+  white-space: normal;
+  background: #0f1420;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  max-height: 260px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.preview-content h3 {
+  color: var(--accent-2);
+  margin: 0.2rem 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.preview-content h4 {
+  color: var(--accent-2);
+  margin: 0.7rem 0 0.3rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+}
+
+.preview-content p { margin: 0.3rem 0; }
+.preview-content ul { margin: 0.2rem 0 0.5rem; padding-left: 1.1rem; }
+.preview-content li { margin-bottom: 0.2rem; }
+
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 1.5rem;
+  font-size: 0.85rem;
+}

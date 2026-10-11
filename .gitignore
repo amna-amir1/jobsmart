@@ -1,0 +1,17 @@
+# Environment secrets
+.env
+
+# Virtual environment
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Local vector store data (Chroma)
+chroma_db/
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
